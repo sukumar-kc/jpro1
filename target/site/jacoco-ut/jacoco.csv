@@ -1,6 +1,0 @@
-GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-TERA,com.devops.tera.model,UserBean,0,17,0,0,0,7,0,5,0,5
-TERA,com.devops.tera.controller,ReportController,15,0,0,0,4,0,3,0,3,0
-TERA,com.devops.tera.controller,HomeController,15,0,0,0,4,0,3,0,3,0
-TERA,com.devops.tera.controller,LoginController,0,69,1,3,0,12,1,6,0,5
-TERA,com.devops.tera.controller,ServiceRequestController,39,0,0,0,10,0,6,0,6,0
