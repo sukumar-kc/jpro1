@@ -1,0 +1,4 @@
+{
+    "sonarQubeUri": "http://sonarqube-techm.eastus.cloudapp.azure.com:9000",
+    "projectKey": "Sampleproject"
+}
