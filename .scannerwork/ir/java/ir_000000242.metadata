@@ -1,5 +1,6 @@
-com.devops.tera.controller.TestLoginController#testLogout()V
+com.devops.tera.controller.LoginController#getStoredEncodedPassword(Ljava/lang/String;)Ljava/lang/String;
 false
-e886aa4f100e7c410ffa2d3f7a656299
+8c53a6feb27d37e7cd4db39504ec26b2
+java.lang.String#equals(Ljava/lang/Object;)Z
 ==
 !unknownMethod! !unknownMethod!

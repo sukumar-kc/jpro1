@@ -1,8 +1,6 @@
-com.devops.tera.controller.TestLoginController#testLogin()V
+com.devops.tera.controller.LoginController#logout(Lcom/devops/tera/model/UserBean;LHttpSession;)LModelAndView;
 false
-2dc3e81f85135a2dc43271edccf964e0
+35186a2f50098db8484fb732dddda1a2
+com.devops.tera.controller.LoginController#getLoginView(Lcom/devops/tera/model/UserBean;)LModelAndView;
 ==
 !unknownMethod! !unknownMethod!
-loadLoginPage com.devops.tera.controller.LoginController#loadLoginPage(Lcom/devops/tera/model/UserBean;)LModelAndView;
-setLoginId com.devops.tera.model.UserBean#setLoginId(Ljava/lang/String;)V
-setPassword com.devops.tera.model.UserBean#setPassword(Ljava/lang/String;)V

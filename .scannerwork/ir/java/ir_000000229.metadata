@@ -1,3 +1,5 @@
-com.devops.tera.controller.LoginController#instance-init#
+com.devops.tera.controller.TestLoginController#testLogout()V
 false
-5a3446840b5267472472a95713a0c2c1
+e886aa4f100e7c410ffa2d3f7a656299
+==
+!unknownMethod! !unknownMethod!
