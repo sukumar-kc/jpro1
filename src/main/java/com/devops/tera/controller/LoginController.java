@@ -38,16 +38,18 @@ public class LoginController
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView login(@ModelAttribute("UserBean") UserBean userBean) 
 	{
-		System.out.println(userBean.getLoginId()+" "+userBean.getPassword());
 		logger.info("In the method login of LoginController.");
-		if(userBean.getLoginId().equals("admin")&&userBean.getPassword().equals("admin"))
-		{
-			System.out.println("Creds checked");
-			return (new ModelAndView("Home","UserBean",userBean));
+
+		// Placeholder for secure authentication logic
+		boolean isAuthenticated = authenticateUser(userBean.getLoginId(), userBean.getPassword());
+
+		if (isAuthenticated) {
+			logger.info("User authenticated successfully.");
+			return (new ModelAndView("Home", "UserBean", userBean));
 		}
-		
+
+		logger.warn("Invalid credentials provided.");
 		return (new ModelAndView("invalidCredentials"));
-		
 	}
 
 	/**
@@ -76,5 +78,11 @@ public class LoginController
 		return (new ModelAndView("Login","UserBean",userBean));
 		//return "Login";
 	}
- */
+	*/
+
+	// Added a private method for user authentication
+	private boolean authenticateUser(String loginId, String password) {
+		// Replace this logic with a secure authentication mechanism (e.g., database lookup)
+		return "admin".equals(loginId) && "admin".equals(password);
+	}
 }
