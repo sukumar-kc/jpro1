@@ -92,13 +92,13 @@ public class LoginController
 		return new ModelAndView("Login", USER_BEAN, userBean);
 	}
 
-	// Simulated method to retrieve stored encoded password (replace with actual implementation)
+	// Replace hardcoded credentials with a secure mechanism
 	private String getStoredEncodedPassword(String loginId) {
 		// Replace hardcoded credentials with database retrieval logic
 		// Example: Fetch from a database or secure storage
 		// This is a placeholder implementation
 		if ("admin".equals(loginId)) {
-			return passwordEncoder.encode("admin"); // Replace with database retrieval logic
+			return "<stored_encoded_password_from_database>"; // Replace with actual retrieval logic
 		}
 		return null;
 	}
