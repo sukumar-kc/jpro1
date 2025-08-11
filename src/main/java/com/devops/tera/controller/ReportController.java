@@ -19,19 +19,12 @@ public class ReportController
 	private static final Logger logger = LoggerFactory.getLogger(ReportController.class);
 	
 	/**
-	 * Handles POST requests to the /report endpoint and returns the Report view.
-	 * Includes error handling and ensures proper logging.
-	 * 
-	 * @return ModelAndView object pointing to the Report view.
+	 * @return 		ModelAndView	ModelAndView object
 	 */
 	@RequestMapping(value = "/report", method = RequestMethod.POST)
-	public ModelAndView report() {
-        try {
-            logger.info("In the method report of ReportController.");
-            return new ModelAndView("Report");
-        } catch (Exception e) {
-            logger.error("Error occurred in the report method: ", e);
-            return new ModelAndView("error"); // Redirect to an error page if needed.
-        }
-    }
+	public ModelAndView report() 
+	{
+		logger.info("In the method report of ReportController.");
+		return (new ModelAndView("Report"));
+	}
 }
