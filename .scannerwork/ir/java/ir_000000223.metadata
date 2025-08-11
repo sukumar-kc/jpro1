@@ -1,3 +1,9 @@
-com.devops.tera.controller.TestLoginController#instance-init#
+com.devops.tera.controller.LoginController#login(Lcom/devops/tera/model/UserBean;LBindingResult;LHttpSession;)LModelAndView;
 false
-392bb8925a1bf4bbcc65aee9b05f0d6d
+279cbb8e463e9fd29790d725221e3d7f
+com.devops.tera.controller.LoginController#getStoredEncodedPassword(Ljava/lang/String;)Ljava/lang/String;
+java.lang.String#isEmpty()Z
+==
+!unknownMethod! !unknownMethod!
+getLoginId com.devops.tera.model.UserBean#getLoginId()Ljava/lang/String;
+getPassword com.devops.tera.model.UserBean#getPassword()Ljava/lang/String;

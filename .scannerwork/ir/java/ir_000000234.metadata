@@ -1,5 +1,8 @@
-com.devops.tera.controller.ServiceRequestController#serviceRequestList()LModelAndView;
+com.devops.tera.controller.TestLoginController#testLogin()V
 false
-32f9d29caa88bf8842c4a16d8cb8fa77
+40107bf6dca03d982dcf6f8775bba953
 ==
 !unknownMethod! !unknownMethod!
+loadLoginPage com.devops.tera.controller.LoginController#loadLoginPage(Lcom/devops/tera/model/UserBean;)LModelAndView;
+setLoginId com.devops.tera.model.UserBean#setLoginId(Ljava/lang/String;)V
+setPassword com.devops.tera.model.UserBean#setPassword(Ljava/lang/String;)V

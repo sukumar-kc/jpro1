@@ -1,5 +1,6 @@
-com.devops.tera.controller.HomeController#loadHomePage()LModelAndView;
+com.devops.tera.controller.LoginController#loadLoginPage(Lcom/devops/tera/model/UserBean;)LModelAndView;
 false
-86ca062995a0a278f39b3b3212e4bc02
+e3f5240b6b7728407af6e85f940e3d31
+com.devops.tera.controller.LoginController#getLoginView(Lcom/devops/tera/model/UserBean;)LModelAndView;
 ==
 !unknownMethod! !unknownMethod!

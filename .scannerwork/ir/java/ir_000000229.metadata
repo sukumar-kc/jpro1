@@ -1,5 +1,5 @@
-com.devops.tera.controller.TestLoginController#testLogout()V
+com.devops.tera.controller.HomeController#loadHomePage()LModelAndView;
 false
-e886aa4f100e7c410ffa2d3f7a656299
+86ca062995a0a278f39b3b3212e4bc02
 ==
 !unknownMethod! !unknownMethod!

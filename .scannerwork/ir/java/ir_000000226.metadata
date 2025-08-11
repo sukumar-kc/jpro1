@@ -1,6 +1,4 @@
-com.devops.tera.controller.TestLoginController#testLoginLoadPage()V
+com.devops.tera.controller.LoginController#getStoredEncodedPassword(Ljava/lang/String;)Ljava/lang/String;
 false
-18df62053212a0d4de3771d3a7df14c9
-==
-!unknownMethod! !unknownMethod!
-loadLoginPage com.devops.tera.controller.LoginController#loadLoginPage(Lcom/devops/tera/model/UserBean;)LModelAndView;
+44338a52067d203664786b86d602d99a
+java.lang.String#equals(Ljava/lang/Object;)Z

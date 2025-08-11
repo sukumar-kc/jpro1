@@ -1,3 +1,6 @@
-com.devops.tera.controller.TestLoginController#<init>()V
+com.devops.tera.controller.LoginController#logout(Lcom/devops/tera/model/UserBean;LHttpSession;)LModelAndView;
 false
-0ec32cada653dcb0ad7708b6824d44e4
+35186a2f50098db8484fb732dddda1a2
+com.devops.tera.controller.LoginController#getLoginView(Lcom/devops/tera/model/UserBean;)LModelAndView;
+==
+!unknownMethod! !unknownMethod!
