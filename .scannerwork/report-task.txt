@@ -2,5 +2,5 @@ projectKey=application_tera
 serverUrl=http://sonarqube-techm.eastus.cloudapp.azure.com:9000
 serverVersion=2025.3.1.109879
 dashboardUrl=http://sonarqube-techm.eastus.cloudapp.azure.com:9000/dashboard?id=application_tera
-ceTaskId=e6d10572-21c7-43dc-b802-f164c8f56f40
-ceTaskUrl=http://sonarqube-techm.eastus.cloudapp.azure.com:9000/api/ce/task?id=e6d10572-21c7-43dc-b802-f164c8f56f40
+ceTaskId=b423407c-7ad7-4b4e-a031-f30f0c5390d8
+ceTaskUrl=http://sonarqube-techm.eastus.cloudapp.azure.com:9000/api/ce/task?id=b423407c-7ad7-4b4e-a031-f30f0c5390d8
