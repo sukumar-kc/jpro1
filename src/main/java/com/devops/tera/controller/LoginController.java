@@ -23,8 +23,14 @@ public class LoginController
 {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	private static final String USER_BEAN = "UserBean";
-	private static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
+	// Use dependency injection for BCryptPasswordEncoder
+	private final BCryptPasswordEncoder passwordEncoder;
+
+	public LoginController(BCryptPasswordEncoder passwordEncoder) {
+		this.passwordEncoder = passwordEncoder;
+	}
+
 	/**
 	 * @param 		UserBean		UserBean object 
 	 * @return 		ModelAndView	ModelAndView object
@@ -44,17 +50,21 @@ public class LoginController
 	public ModelAndView login(@ModelAttribute(USER_BEAN) UserBean userBean, HttpSession session) 
 	{
 		logger.info("In the method login of LoginController.");
-		if (userBean.getLoginId() != null && userBean.getPassword() != null) {
-			String encodedPassword = passwordEncoder.encode("admin"); // Replace with actual password retrieval logic
-			if (userBean.getLoginId().equals("admin") && passwordEncoder.matches(userBean.getPassword(), encodedPassword)) {
+		if (userBean.getLoginId() != null && !userBean.getLoginId().isEmpty() &&
+			userBean.getPassword() != null && !userBean.getPassword().isEmpty()) {
+			// Replace hardcoded credentials with a secure mechanism
+			String storedEncodedPassword = getStoredEncodedPassword(userBean.getLoginId());
+			if (storedEncodedPassword != null && passwordEncoder.matches(userBean.getPassword(), storedEncodedPassword)) {
 				logger.info("Credentials verified successfully.");
+				session.invalidate(); // Regenerate session to prevent session fixation
+				session = session.getSession(true);
 				session.setAttribute("user", userBean);
 				return (new ModelAndView("Home", USER_BEAN, userBean));
 			} else {
 				logger.warn("Invalid credentials provided.");
 			}
 		} else {
-			logger.error("Login ID or Password is null.");
+			logger.error("Login ID or Password is null or empty.");
 		}
 		return (new ModelAndView("invalidCredentials"));
 	}
@@ -71,20 +81,11 @@ public class LoginController
 		return (new ModelAndView("Login", USER_BEAN, userBean));
 	}
 
-	/*
- 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView home(Locale locale, Model model, @ModelAttribute("UserBean") UserBean userBean) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return (new ModelAndView("Login","UserBean",userBean));
-		//return "Login";
+	// Simulated method to retrieve stored encoded password (replace with actual implementation)
+	private String getStoredEncodedPassword(String loginId) {
+		if ("admin".equals(loginId)) {
+			return passwordEncoder.encode("admin"); // Replace with database retrieval logic
+		}
+		return null;
 	}
- */
 }
