@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.devops.tera.model.UserBean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @author  Mahesh Kumar Palaniswamy
@@ -20,6 +23,7 @@ public class LoginController
 {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	private static final String USER_BEAN = "UserBean";
+	private static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	/**
 	 * @param 		UserBean		UserBean object 
@@ -37,12 +41,14 @@ public class LoginController
 	 * @return 		ModelAndView	ModelAndView object
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView login(@ModelAttribute(USER_BEAN) UserBean userBean) 
+	public ModelAndView login(@ModelAttribute(USER_BEAN) UserBean userBean, HttpSession session) 
 	{
 		logger.info("In the method login of LoginController.");
 		if (userBean.getLoginId() != null && userBean.getPassword() != null) {
-			if (userBean.getLoginId().equals("admin") && userBean.getPassword().equals("admin")) {
+			String encodedPassword = passwordEncoder.encode("admin"); // Replace with actual password retrieval logic
+			if (userBean.getLoginId().equals("admin") && passwordEncoder.matches(userBean.getPassword(), encodedPassword)) {
 				logger.info("Credentials verified successfully.");
+				session.setAttribute("user", userBean);
 				return (new ModelAndView("Home", USER_BEAN, userBean));
 			} else {
 				logger.warn("Invalid credentials provided.");
@@ -58,10 +64,10 @@ public class LoginController
 	 * @return 		ModelAndView	ModelAndView object
 	 */
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
-	public ModelAndView logout(@ModelAttribute(USER_BEAN) UserBean userBean) 
+	public ModelAndView logout(@ModelAttribute(USER_BEAN) UserBean userBean, HttpSession session) 
 	{
 		logger.info("In the method logout of LoginController.");
-		// Invalidate session or perform logout logic here
+		session.invalidate();
 		return (new ModelAndView("Login", USER_BEAN, userBean));
 	}
 
