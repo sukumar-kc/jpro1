@@ -19,16 +19,17 @@ import com.devops.tera.model.UserBean;
 public class LoginController 
 {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+	private static final String USER_BEAN = "UserBean";
 	
 	/**
 	 * @param 		UserBean		UserBean object 
 	 * @return 		ModelAndView	ModelAndView object
 	 */
 	@RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView loadLoginPage(@ModelAttribute("UserBean") UserBean userBean) 
+	public ModelAndView loadLoginPage(@ModelAttribute(USER_BEAN) UserBean userBean) 
 	{
 		logger.info("In the method loadLoginPage of LoginController.");
-		return (new ModelAndView("Login","UserBean",userBean));
+		return (new ModelAndView("Login", USER_BEAN, userBean));
 	}
 
 	/**
@@ -36,18 +37,20 @@ public class LoginController
 	 * @return 		ModelAndView	ModelAndView object
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView login(@ModelAttribute("UserBean") UserBean userBean) 
+	public ModelAndView login(@ModelAttribute(USER_BEAN) UserBean userBean) 
 	{
-		System.out.println(userBean.getLoginId()+" "+userBean.getPassword());
 		logger.info("In the method login of LoginController.");
-		if(userBean.getLoginId().equals("admin")&&userBean.getPassword().equals("admin"))
-		{
-			System.out.println("Creds checked");
-			return (new ModelAndView("Home","UserBean",userBean));
+		if (userBean.getLoginId() != null && userBean.getPassword() != null) {
+			if (userBean.getLoginId().equals("admin") && userBean.getPassword().equals("admin")) {
+				logger.info("Credentials verified successfully.");
+				return (new ModelAndView("Home", USER_BEAN, userBean));
+			} else {
+				logger.warn("Invalid credentials provided.");
+			}
+		} else {
+			logger.error("Login ID or Password is null.");
 		}
-		
 		return (new ModelAndView("invalidCredentials"));
-		
 	}
 
 	/**
@@ -55,10 +58,11 @@ public class LoginController
 	 * @return 		ModelAndView	ModelAndView object
 	 */
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
-	public ModelAndView logout(@ModelAttribute("UserBean") UserBean userBean) 
+	public ModelAndView logout(@ModelAttribute(USER_BEAN) UserBean userBean) 
 	{
 		logger.info("In the method logout of LoginController.");
-		return (new ModelAndView("Login","UserBean",userBean));
+		// Invalidate session or perform logout logic here
+		return (new ModelAndView("Login", USER_BEAN, userBean));
 	}
 
 	/*
