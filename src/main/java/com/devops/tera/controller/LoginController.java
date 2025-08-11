@@ -12,6 +12,8 @@ import com.devops.tera.model.UserBean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.servlet.http.HttpSession;
+import org.springframework.validation.BindingResult;
+import javax.validation.Valid;
 
 /**
  * @author  Mahesh Kumar Palaniswamy
@@ -39,7 +41,7 @@ public class LoginController
 	public ModelAndView loadLoginPage(@ModelAttribute(USER_BEAN) UserBean userBean) 
 	{
 		logger.info("In the method loadLoginPage of LoginController.");
-		return (new ModelAndView("Login", USER_BEAN, userBean));
+		return getLoginView(userBean);
 	}
 
 	/**
@@ -47,9 +49,13 @@ public class LoginController
 	 * @return 		ModelAndView	ModelAndView object
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView login(@ModelAttribute(USER_BEAN) UserBean userBean, HttpSession session) 
+	public ModelAndView login(@Valid @ModelAttribute(USER_BEAN) UserBean userBean, BindingResult result, HttpSession session) 
 	{
 		logger.info("In the method login of LoginController.");
+		if (result.hasErrors()) {
+			logger.error("Validation errors in UserBean.");
+			return new ModelAndView("Login", USER_BEAN, userBean);
+		}
 		if (userBean.getLoginId() != null && !userBean.getLoginId().isEmpty() &&
 			userBean.getPassword() != null && !userBean.getPassword().isEmpty()) {
 			// Replace hardcoded credentials with a secure mechanism
@@ -78,11 +84,19 @@ public class LoginController
 	{
 		logger.info("In the method logout of LoginController.");
 		session.invalidate();
-		return (new ModelAndView("Login", USER_BEAN, userBean));
+		return getLoginView(userBean);
+	}
+
+	// Refactored common logic for returning the login view
+	private ModelAndView getLoginView(UserBean userBean) {
+		return new ModelAndView("Login", USER_BEAN, userBean);
 	}
 
 	// Simulated method to retrieve stored encoded password (replace with actual implementation)
 	private String getStoredEncodedPassword(String loginId) {
+		// Replace hardcoded credentials with database retrieval logic
+		// Example: Fetch from a database or secure storage
+		// This is a placeholder implementation
 		if ("admin".equals(loginId)) {
 			return passwordEncoder.encode("admin"); // Replace with database retrieval logic
 		}
