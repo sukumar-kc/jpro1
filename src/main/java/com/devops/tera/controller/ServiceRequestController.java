@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
  * @since   2014-12-08
  */
 @Controller
-
 public class ServiceRequestController 
 {
 	private static final Logger logger = LoggerFactory.getLogger(ServiceRequestController.class);
@@ -24,8 +23,8 @@ public class ServiceRequestController
 	@RequestMapping(value = "/loadCreateServiceRequestPage", method = RequestMethod.POST)
 	public ModelAndView loadCreateServiceRequestPage() 
 	{
-		logger.info("In the method loadCreateServiceRequestPage of ServiceRequestController.");
-		return (new ModelAndView("CreateServiceRequest"));
+		logger.info("Loading the Create Service Request page.");
+		return new ModelAndView("CreateServiceRequest");
 	}
 
 	/**
@@ -34,8 +33,8 @@ public class ServiceRequestController
 	@RequestMapping(value = "/createServiceRequest", method = RequestMethod.POST)
 	public ModelAndView createServiceRequest() 
 	{
-		logger.info("In the method createServiceRequest of ServiceRequestController.");
-		return (new ModelAndView("ServiceRequestCreated"));
+		logger.info("Creating a new Service Request.");
+		return new ModelAndView("ServiceRequestCreated");
 	}
 
 	/**
@@ -44,8 +43,8 @@ public class ServiceRequestController
 	@RequestMapping(value = "/serviceRequestList", method = RequestMethod.POST)
 	public ModelAndView serviceRequestList() 
 	{
-		logger.info("In the method serviceRequestList of ServiceRequestController.");
-		return (new ModelAndView("ServiceRequestList"));
+		logger.info("Fetching the list of Service Requests.");
+		return new ModelAndView("ServiceRequestList");
 	}
 	
 	/**
@@ -54,9 +53,7 @@ public class ServiceRequestController
 	@RequestMapping(value = "/serviceRequestDetails", method = RequestMethod.POST)
 	public ModelAndView serviceRequestDetails() 
 	{
-		logger.info("In the method serviceRequestDetails of ServiceRequestController.");
-		return (new ModelAndView("ServiceRequestDetails"));
+		logger.info("Fetching details of a specific Service Request.");
+		return new ModelAndView("ServiceRequestDetails");
 	}
-@Request RequestMapping
-
 }
