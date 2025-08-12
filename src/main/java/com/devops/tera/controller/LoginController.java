@@ -62,8 +62,8 @@ public class LoginController
 			String storedEncodedPassword = getStoredEncodedPassword(userBean.getLoginId());
 			if (storedEncodedPassword != null && passwordEncoder.matches(userBean.getPassword(), storedEncodedPassword)) {
 				logger.info("Credentials verified successfully.");
-				session.invalidate(); // Regenerate session to prevent session fixation
-				session = session.getSession(true);
+				session.invalidate(); // Invalidate the old session
+				session = session.getSession(true); // Create a new session
 				session.setAttribute("user", userBean);
 				return (new ModelAndView("Home", USER_BEAN, userBean));
 			} else {
