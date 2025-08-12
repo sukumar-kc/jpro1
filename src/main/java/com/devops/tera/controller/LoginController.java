@@ -55,7 +55,7 @@ public class LoginController
 		if (result.hasErrors()) {
 			logger.error("Validation errors in UserBean.");
 			return new ModelAndView("Login", USER_BEAN, userBean);
-		}
+		}     
 		if (userBean.getLoginId() != null && !userBean.getLoginId().isEmpty() &&
 			userBean.getPassword() != null && !userBean.getPassword().isEmpty()) {
 			// Replace hardcoded credentials with a secure mechanism
