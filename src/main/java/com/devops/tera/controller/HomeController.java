@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController 
 {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+	print
 	/**
 	 * @return 		ModelAndView	ModelAndView object
 	 */
