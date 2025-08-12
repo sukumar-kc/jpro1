@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @since   2014-12-08
  */
 @Controller
+
 public class ServiceRequestController 
 {
 	private static final Logger logger = LoggerFactory.getLogger(ServiceRequestController.class);
@@ -56,4 +57,6 @@ public class ServiceRequestController
 		logger.info("In the method serviceRequestDetails of ServiceRequestController.");
 		return (new ModelAndView("ServiceRequestDetails"));
 	}
+@Request RequestMapping
+
 }
