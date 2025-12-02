@@ -5,7 +5,10 @@
 	<groupId>com.devops</groupId>
 	<artifactId>tera</artifactId>
 	<name>TERA</name>
-	<packaging>war</packaging>
+	<packaging>pom</packaging>
+	<modules>
+		<module>tera</module>
+	</modules>
 	<version>3.0.1-BUILD</version>
 	<properties>
 		<java-version>1.6</java-version>
